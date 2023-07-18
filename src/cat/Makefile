@@ -1,5 +1,5 @@
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CC= gcc
+CFLAGS= -Wall -Werror -Wextra
 
 C_DIR=./functions/
 H_DIR=./headers/
@@ -7,14 +7,14 @@ H_DIR=./headers/
 C_FILE= $(C_DIR)*.c
 H_FILE= $(H_DIR)*.h
 
-all: cat
+all: cat_plus
 
-cat:
-	$(CC) $(CFLAGS) $(C_FILE) -o cat
+cat_plus:
+	$(CC) $(CFLAGS) $(C_FILE) -o cat_plus
 
 clean:
 	rm -rf *.out
-	rm -f cat
+	rm -f cat_plus
 
 clang: clang-format clang-check
 
@@ -27,8 +27,3 @@ clang-check:
 	cp ../../materials/linters/.clang-format .
 	clang-format -n $(H_FILE) $(C_FILE)
 	rm -rf .clang-format
-
-check:
-	cat check_s21-cat.txt > 1.sh
-	sh 1.sh
-	rm -f 1.sh
